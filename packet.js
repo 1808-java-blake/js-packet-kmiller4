@@ -28,31 +28,72 @@ function fib(n) {
 // Define function: bubbleSort(numArray)
 // Use the bubble sort algorithm to sort the array.
 // Return the sorted array.
+function swap(array, i, j) {
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
 function bubbleSort(numArray) {
-    return numArray;
+    for(var i = 0; i < numArray.length; i++) {
+        for(var j = 1; j < numArray.length; j++) {
+          if(array[j - 1] > numArray[j]) {
+            swap(numArray, j - 1, j);
+          }
+        }
+      }
+      return numArray;
+    }
 }
 
 // 3. Reverse String
 // Define function: reverseStr(someStr)
 // Reverse and return the String.
 
+function reverseStr(someStr){
+    return someStr.split("").reverse().join("");
+}
+
 // 4. Factorial
 // Define function: factorial(someNum)
 // Use recursion to compute and return the factorial of someNum.
+function factorial(someNum) {
+    if (someNum == 0 ) {
+        return 1;
+    }
+    else{
+        return (someNum *  factorial(someNum - 1));
+    }
+}
 
 // 5. Substring
 // Define function substring(someStr, length, offset)
 // Return the substring contained between offset and (offset + length) inclusively.
 // If incorrect input is entered, use the alert function and describe why the input was incorrect.
+function substring(someStr, length, offset) {
+
+}
 
 // 6. Even Number
 // Define function: isEven(someNum)
 // Return true if even, false if odd.
 // Do not use % operator.
+function isEven(someNum) {
+    return !( someNum & 1 );
+}
 
 // 7. Palindrome
 // Define function isPalindrome(someStr)
 // Return true if someStr is a palindrome, otherwise return false
+function isPalindrome(someStr) {
+    var len = someStr.length;
+    for (var i = 0; i < len/2; i++) {
+      if (someStr[i] !== someStr[len - 1 - i]) {
+          return false;
+      }
+    }
+    return true;
+}
 
 // 8. Shapes
 // Define function: printShape(shape, height, character)
