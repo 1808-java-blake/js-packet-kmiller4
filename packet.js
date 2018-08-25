@@ -42,9 +42,8 @@ function bubbleSort(numArray) {
           }
         }
       }
-      return numArray;
+    return numArray;
     }
-}
 
 // 3. Reverse String
 // Define function: reverseStr(someStr)
@@ -71,7 +70,22 @@ function factorial(someNum) {
 // Return the substring contained between offset and (offset + length) inclusively.
 // If incorrect input is entered, use the alert function and describe why the input was incorrect.
 function substring(someStr, length, offset) {
-
+    var temp = "";
+	if(offset > someStr.length || offset<0)
+	{
+        alert("Index out of bounds of input string.");
+		return;
+	}
+	if(length + offset > someStr.length)
+	{
+        alert("String longer than input string");
+		return;
+	}
+	for(let i = offset; i < length+offset; i++)
+	{
+		temp += someStr[i];
+	}
+	return temp;
 }
 
 // 6. Even Number
@@ -106,20 +120,76 @@ function isPalindrome(someStr) {
 // %%%
 // %%%
 // %%%
+
 // Example for printShape("Triangle", 3, "$");
 // $
 // $$
 // $$$
+
 // Example for printShape("Diamond", 5, "*");
 //   *
 //  ***
 // *****
 //  ***
 //   *
+function printShape(shape, height, character) {
+    switch(shape) {
+        case "Square":
+        {
+            for(let i =0; i<height; i++)
+            {
+                let temp = "";
+                for(let j=0; j<height; j++)
+                    temp+=character;
+                console.log(temp);
+            }
+            return;
+        }
+        case "Triangle":
+        {
+            for(let i =0; i<height; i++)
+            {
+                let temp = "";
+                for(let j=0; j<=i; j++)
+                    temp+=character;
+                console.log(temp);
+            }
+            return;
+        }
+        default:
+        {
+            let half = Math.floor(height/2);
+            for(let i =0; i<height; i++)
+            {
+                let temp = "";
+                for(let j=0; j<height; j++)
+                {
+                    if(
+                        i==half|| j==half||
+                        ((i<half)&&(j<half)&&(i+j>=half))||
+                        ((i<half)&&(j>half)&&(j-i<=half))||
+                        ((i>half)&&(j<half)&&(i-j<=half))||
+                        ((i>half)&&(j>half)&&((height-j-1)+(height-i-1)>=half))
+                    )
+                        temp+=""+character;
+                        temp+=' ';
+                }
+                console.log(temp);
+            }
+            return;
+        }
+    }
+}
 
 // 9. Object literal
 // Define function traverseObject(someObj)
 // Print every property and it's value.
+function traverseObject(someObj) {
+    for (var prop in obj) {
+        obj[prop] = 'xxx';
+    }
+    return;
+}
 
 // 10. Delete Element
 // Define function deleteElement(someArr)
@@ -127,6 +197,12 @@ function isPalindrome(someStr) {
 // Delete the third element in the array.
 // Print length
 // The lengths should be the same.
+function deleteElement(someArr) {
+    console.log(someArr.length);
+    delete someArr[2];
+    console.log(someArr.length);
+    return;
+}
 
 // 11. Splice Element
 // Define function spliceElement(someArr)
@@ -134,17 +210,30 @@ function isPalindrome(someStr) {
 // Splice the third element in the array.
 // Print length
 // The lengths should be one less than the original length.
+function spliceElement(someArr) {
+    console.log(someArr.length);
+    someArr.splice(2, 1);
+    console.log(someArr.length);
+    return;
+}
 
 // 12. Defining an object using a constructor
 // Define a function Person(name, age)
 // The following line should set a Person object to the variable john:
 // 	var john = new Person("John", 30);
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    return;
+}
 
 // 13. Defining an object using an object literal
 // Define function getPerson(name, age)
 // The following line should set a Person object to the variable john:
 // 	var john = getPerson("John", 30);
- 
+ function getPerson(name, age) {
+    return {"name": name, "age": age};
+ }
  
  
  
