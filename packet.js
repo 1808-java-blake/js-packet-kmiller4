@@ -138,7 +138,7 @@ function printShape(shape, height, character) {
         {
             for(let i =0; i<height; i++)
             {
-                let temp = "";
+                let temp = '';
                 for(let j=0; j<height; j++)
                     temp+=character;
                 console.log(temp);
@@ -149,30 +149,35 @@ function printShape(shape, height, character) {
         {
             for(let i =0; i<height; i++)
             {
-                let temp = "";
+                let temp = '';
                 for(let j=0; j<=i; j++)
                     temp+=character;
                 console.log(temp);
             }
             return;
         }
-        default:
-        {
-            let half = Math.floor(height/2);
-            for(let i =0; i<height; i++)
-            {
-                let temp = "";
-                for(let j=0; j<height; j++)
-                {
-                    if(
-                        i==half|| j==half||
-                        ((i<half)&&(j<half)&&(i+j>=half))||
-                        ((i<half)&&(j>half)&&(j-i<=half))||
-                        ((i>half)&&(j<half)&&(i-j<=half))||
-                        ((i>half)&&(j>half)&&((height-j-1)+(height-i-1)>=half))
-                    )
-                        temp+=""+character;
-                        temp+=' ';
+        default: {
+            let middle = height / 2 - 1;
+			let count = 1;
+
+			for (let i = 0; i < height; i++) {
+				let temp = '';
+
+                for (let j = 0; j < (height - count) / 2; j++ ){
+                    temp += ' ';
+                }
+                for (let j = 0; j < count; j++) {
+                    temp += character;
+                }
+                for (let j = 0; j < (height - count) / 2; j++) {
+                    temp += ' ';
+                }
+
+                if (i < middle) {
+                    count += 2;
+                }
+                else if (i > middle) {
+                    count = count - 2;
                 }
                 console.log(temp);
             }
